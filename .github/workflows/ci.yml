@@ -2,22 +2,20 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Login Docker
-      env:
-        DOCKER_USERNAME:  ${{secrets.DOCKER_USERNAME}}
-        DOCKER_PASSWORD:  ${{secrets.DOCKER_USERNAME}}
-      run:  docker login -u $DOCKER_USERNAME -p $DOCKER_USERNAME
-    - name: Build the docker image
-      run: docker build -t  demo-cicd
-    - name: Push to dockerhub
-      run: docker push viluong1007/demo-cicd:latesst
+      - uses: actions/checkout@v3
+      - name: Login Docker
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - name: Build the docker image
+        run: docker build -t  demo-cicd
+      - name: Push to dockerhub
+        run: docker push viluong1007/demo-cicd:latest
