@@ -1,19 +1,26 @@
+# Sử dụng một hình ảnh đáng tin cậy của Node.js
 FROM node:18
 
-# Create app directory
-WORKDIR /usr/src/app
+# Thiết lập thư mục làm việc trong container
+WORKDIR /app
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package.json ./
+# Sao chép package.json và package-lock.json vào thư mục làm việc
+COPY package*.json ./
 
+# Cài đặt các dependencies
 RUN npm install
-# If you are building your code for production
-# RUN npm ci --omit=dev
 
-# Bundle app source
+# Sao chép tất cả các tệp nguồn vào thư mục làm việc
 COPY . .
 
-EXPOSE 8080
-CMD [ "node", "server.js" ]
+# prisma generate
+RUN npx prisma generate
+
+# Xây dựng ứng dụng Next.js
+RUN npm run build
+
+# Mở cổng 3000 để truy cập ứng dụng
+EXPOSE 3000
+
+# Chạy ứng dụng khi container được khởi chạy
+CMD ["npm", "start"]

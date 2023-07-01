@@ -1,0 +1,129 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider      = "prisma-client-js"
+    binaryTargets = ["debian-openssl-1.1.x"]
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id        String   @id @default(uuid())
+    username  String
+    password  String
+    role      String
+    createdAt DateTime @default(now())
+    // skills    Skills[]
+    // projects  Project[]
+    // services  Service[]
+    // posts     Posts[]
+}
+
+model Skills {
+    id   String @id @default(uuid())
+    name String
+
+    parentId  String?
+    // user      User     @relation(fields: [createdBy], references: [id])
+    createdAt DateTime @default(now())
+
+    // createdBy String
+    Media Media[]
+}
+
+model Media {
+    id        String   @id @default(uuid())
+    url       String
+    fileName  String
+    type      String
+    parentId  String
+    createdAt DateTime @default(now())
+
+    skills       Skills? @relation(fields: [parentId], references: [id])
+    skillItemsId String?
+}
+
+model Project {
+    id          String   @id @default(uuid())
+    projectName String
+    description String
+    createdBy   String
+    // User        User     @relation(fields: [createdBy], references: [id])
+    createdAt   DateTime @default(now())
+}
+
+model Service {
+    id          String   @id @default(uuid())
+    name        String
+    parentId    String?
+    description String
+    createdAt   DateTime @default(now())
+    // createdBy   String
+    // User        User     @relation(fields: [createdBy], references: [id])
+}
+
+model Request {
+    id             String           @id @default(uuid())
+    name           String
+    email          String
+    phone          String
+    website        String
+    serviceUWant   String
+    urgently       Boolean
+    brief          String
+    createdAt      DateTime         @default(now())
+    requestDetails RequestDetails[]
+}
+
+model RequestDetails {
+    id         String   @id @default(uuid())
+    questionId String
+    answer     String
+    requestId  String
+    createdAt  DateTime @default(now())
+
+    request  Request   @relation(fields: [requestId], references: [id])
+    question Questions @relation(fields: [questionId], references: [id])
+}
+
+model Questions {
+    id             String           @id @default(uuid())
+    content        String
+    type           String
+    createdAt      DateTime         @default(now())
+    answers        Answers[]
+    RequestDetails RequestDetails[]
+}
+
+model Answers {
+    id        String   @id @default(uuid())
+    content   String
+    parentId  String
+    createdAt DateTime @default(now())
+
+    question Questions @relation(fields: [parentId], references: [id])
+}
+
+model Categorys {
+    id        String   @id @default(uuid())
+    name      String
+    code      String
+    createdAt DateTime @default(now())
+    post      Posts[]
+}
+
+model Posts {
+    id         String   @id @default(uuid())
+    title      String
+    content    String
+    categoryId String?
+    // user       User     @relation(fields: [createdBy], references: [id])
+    createdAt  DateTime @default(now())
+
+    createdBy String
+    category  Categorys? @relation(fields: [categoryId], references: [id])
+}
