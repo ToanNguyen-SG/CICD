@@ -4,7 +4,7 @@ import { HomeType } from './type'
 
 const prisma = new PrismaClient()
 
-// add project
+// add project hihi
 export const POST = async (request: any) => {
   const body: HomeType = await request.json()
 
