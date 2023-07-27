@@ -1,0 +1,26 @@
+.about-background-start{
+    background-image: url('/start@2x3.png');
+}
+
+.zoom-rotate {
+    transition: transform 0.3s;
+  }
+  
+  .zoom-rotate:hover {
+    transform: scale(1.2) rotate(-15deg);
+    transition-delay: 0s; 
+  }
+  
+  .zoom-rotate:not(:hover) {
+    transform: scale(1) rotate(0deg);
+    transition-delay: 0.2s;
+  }
+  
+
+.About_Radius {
+border-radius: 354px;
+background: rgba(0, 117, 255, 0.33);
+filter: blur(26px);
+width: 354px;
+height: 354px; 
+}

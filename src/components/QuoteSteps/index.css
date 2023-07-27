@@ -1,0 +1,19 @@
+.INPUT_QUOTE{
+    width: 606px;
+    height: 65px;
+    flex-shrink: 0; 
+    border-radius: 7px;
+    background: var(--input, rgba(20, 100, 100, 0.20));
+    box-shadow: 0px 0px 4px 0px rgba(19, 176, 198, 0.38) inset;
+    color: white;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+    border:  1px solid #146464;
+    border-radius: 8;
+}
+
+.INPUT_QUOTE::placeholder {
+    color: #626262;
+}

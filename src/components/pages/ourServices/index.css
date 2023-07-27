@@ -1,0 +1,21 @@
+.our_container {
+    background: linear-gradient(90deg, #000A0C 0%, #00113D 100%);
+}
+
+.our_title {
+    color: var(--color-1, #17C5C5);
+font-size: 40px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-bottom:  44px;
+}
+
+.our_content {
+    color: #FFF;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-top: 44px;
+}

@@ -1,0 +1,17 @@
+.ourGame_Title {
+    color: var(--color-1, #17C5C5);
+font-size: 40px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
+}
+
+.ourGame_Button {
+    width: 268px;
+height: 65px;
+flex-shrink: 0;
+    border-radius: 7px;
+border: 1px solid var(--color-1, #17C5C5);
+background: var(--color-1, #17C5C5);
+}

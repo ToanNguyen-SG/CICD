@@ -2,7 +2,7 @@ name: CD Pipeline
 
 on:
   workflow_run:
-    workflows: ["CI Pipeline"]
+    workflows: ['CI Pipeline']
     types:
       - completed
 
@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Pull Docker Image
-        run: sudo docker pull viluong1007/demo-cicd
+        run: sudo docker pull viluong1007/uxpon
 
       - name: Delete Old docker Container
-        run: sudo docker rm -f demo-cicd-container || true
+        run: sudo docker rm -f uxpon-container || true
 
       - name: Run Docker Container
-        run: sudo docker run -d -p 8080:8080 --name demo-cicd-container viluong1007/demo-cicd
+        run: sudo docker run -d -p 8080:8080 --name uxpon-container viluong1007/uxpon

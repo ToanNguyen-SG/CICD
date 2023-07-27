@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.scroll-container {
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+  
+  .scroll-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scroll-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+  
+  .scroll-container::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+.about-background-start{
+    background-image: url('/start@2x3.png');
+}
