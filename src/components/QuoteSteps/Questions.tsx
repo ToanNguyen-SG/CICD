@@ -54,9 +54,7 @@ export default function Questions({ questions, steps, setAllQuestionInCate }: Pr
             <Input
               onChange={e => setValueForAnswers(e.target.value, questionCurrent.id)}
               placeholder='Your Answers'
-              value={
-                questionCurrent.answers?.length > 0 ? questionCurrent.answers[0]?.answer : null
-              }
+              value={questionCurrent.answers?.length > 0 ? questionCurrent.answers[0]?.answer : ''}
               className='INPUT_QUOTE'
             />
           </>

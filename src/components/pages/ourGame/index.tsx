@@ -11,7 +11,7 @@ import 'slick-carousel/slick/slick-theme.css'
 
 export default function OurGamePage() {
   const [gameCurrent, setGameCurrent] = useState<OurType>()
-  const customSlider = useRef()
+  const customSlider = useRef<any>(null)
 
   const { data: games } = useQuery(['allOurGame'], (): Promise<OurType[]> => {
     return getAllOurService(OurTypeEnum.game) || []

@@ -1,7 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
-import type { AppProps } from 'next/app'
 
 import 'antd/dist/antd.less'
 import '../components/Layout.css'
@@ -9,7 +8,7 @@ import { useRouter } from 'next/router'
 
 const AppLayout = dynamic(() => import('./layout'), { ssr: false })
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }) {
   const router = useRouter()
 
   const currentLocation = router
