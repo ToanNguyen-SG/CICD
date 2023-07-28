@@ -1,13 +1,35 @@
+import { getAllOurService } from '@/services/ourService'
+import { OurType, OurTypeEnum } from '@/types'
+import { useQuery } from '@tanstack/react-query'
 import { Col, Row } from 'antd'
 import React from 'react'
 
 export default function OurCampaignsPage() {
+  const { data: campaigns } = useQuery(['allOurCampaigns'], (): Promise<OurType[]> => {
+    return getAllOurService(OurTypeEnum.campaigns) || []
+  })
+
   return (
     <div className='pl-16 pr-16 '>
       <div className='text-[40px] text-[#17C5C5] flex justify-center mt-10 mb-10'>
         Our Campaigns
       </div>
-      <Row gutter={16}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr 1fr ifr',
+          gridTemplateRows: '1fr 1fr',
+          gridRowGap: 8,
+        }}>
+        {campaigns?.map(i => {
+          return (
+            <div>
+              <img key={i.id} style={{ objectFit: 'cover' }} src={i.thumbnailImage} />
+            </div>
+          )
+        })}
+      </div>
+      {/* <Row gutter={16}>
         <Col span={6}>
           <div className='mb-10'>
             <img style={{ objectFit: 'cover' }} src='/ourCampaigns/minion1-1.png' />
@@ -40,7 +62,7 @@ export default function OurCampaignsPage() {
             <img style={{ objectFit: 'cover' }} src='/ourCampaigns/Rectangle4-2.png' />
           </div>
         </Col>
-      </Row>
+      </Row> */}
       <div className='flex justify-center mt-14 mb-14'>
         <span>
           <img

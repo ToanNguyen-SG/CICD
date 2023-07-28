@@ -17,8 +17,10 @@ import {
   UploadFile,
   UploadProps,
 } from 'antd'
+import { useForm } from 'antd/es/form/Form'
 import { RcFile } from 'antd/es/upload'
 import React, { useCallback, useState } from 'react'
+import { toast } from 'react-toastify'
 
 const { TextArea } = Input
 
@@ -56,6 +58,8 @@ export default function page() {
   const [fileList, setFileList] = useState<UploadFile[]>([])
   const [ourTypeSelected, setOurTypeSelected] = useState('')
 
+  const [form] = useForm()
+
   const uploadImageRender = useCallback((): React.ReactNode => {
     return (
       <>
@@ -85,11 +89,14 @@ export default function page() {
   }, [ourTypeSelected])
 
   const createMutation = useMutation(createOurService, {
-    onSuccess: data => {
-      console.log('datadata', data)
+    onSuccess: () => {
+      toast.success('Create Successfully!!')
+      form.resetFields()
+      setPreviewTitle('')
+      setFileList([])
     },
-    onError: err => {
-      console.log('err', err)
+    onError: () => {
+      toast.error('Err,Pls try again!!')
     },
   })
 
@@ -98,7 +105,7 @@ export default function page() {
 
     createMutation.mutate({
       ...data,
-      typeOur: OurTypeEnum.game,
+      typeOur: ourTypeSelected,
       thumbnailImage: previewImage,
       fileName: date.toISOString() + previewTitle,
     })
@@ -138,21 +145,8 @@ export default function page() {
 
   return (
     <div className='w-full h-full'>
-      <Card
-        className='w-full h-full'
-        title='Our Service'
-        extra={
-          <Row>
-            <Col>
-              <Select
-                style={{ minWidth: 220 }}
-                options={selectItems}
-                placeholder='Select category'
-              />
-            </Col>
-          </Row>
-        }>
-        <Form name='basic' layout='vertical' onFinish={onFinish} autoComplete='off'>
+      <Card className='w-full h-full' title='Our Service'>
+        <Form form={form} name='basic' layout='vertical' onFinish={onFinish} autoComplete='off'>
           <Row gutter={24} className='mt-2 items-center'>
             <Col span={12}>
               <Form.Item

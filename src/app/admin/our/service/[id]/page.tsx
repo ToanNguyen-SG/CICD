@@ -95,13 +95,7 @@ export default function page({ params }: any) {
       <Card
         className='w-full h-full'
         title='Our Service'
-        extra={
-          <Row>
-            <Col>
-              <Button>Create</Button>
-            </Col>
-          </Row>
-        }>
+        >
         <Collapse
           defaultActiveKey={['1', '2']}
           expandIconPosition='end'

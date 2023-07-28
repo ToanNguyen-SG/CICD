@@ -1,7 +1,14 @@
+import { getAllOurService } from '@/services/ourService'
+import { OurType, OurTypeEnum } from '@/types'
+import { useQuery } from '@tanstack/react-query'
 import { Col, Row } from 'antd'
 import React from 'react'
 
 export default function OurFilms() {
+  const { data: films } = useQuery(['allOurPhim'], (): Promise<OurType[]> => {
+    return getAllOurService(OurTypeEnum.films) || []
+  })
+
   return (
     <div className='mb-[110px]'>
       <Row>
@@ -23,15 +30,9 @@ export default function OurFilms() {
               gridRowGap: 28,
               paddingTop: 64,
             }}>
-            <img style={{ objectFit: 'cover' }} src='/ourFilm/Rectangle1.png' />
-            <img style={{ objectFit: 'cover' }} src='/ourFilm/Rectangle2.png' />
-            <img style={{ objectFit: 'cover' }} src='/ourFilm/Rectangle3.png' />
-            <img style={{ objectFit: 'cover' }} src='/ourFilm/Rectangle4.png' />
-            <img style={{ objectFit: 'cover' }} src='/ourFilm/Rectangle5.png' />
-            <img style={{ objectFit: 'cover' }} src='/ourFilm/Rectangle6.png' />
-            <img style={{ objectFit: 'cover' }} src='/ourFilm/Rectangle7.png' />
-            <img style={{ objectFit: 'cover' }} src='/ourFilm/Rectangle8.png' />
-            <img style={{ objectFit: 'cover' }} src='/ourFilm/Rectangle9.png' />
+            {films?.slice(0, 9).map(i => {
+              return <img key={i.id} style={{ objectFit: 'cover' }} src={i.thumbnailImage} />
+            })}
           </div>
         </Col>
         <Col className='flex justify-end' span={4}>
