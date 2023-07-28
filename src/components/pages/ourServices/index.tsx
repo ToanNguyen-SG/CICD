@@ -23,7 +23,7 @@ export default function OurServices() {
     return (
       <Row id='Project'>
         {services?.map(i => (
-          <Col>
+          <Col xl={6} lg={6} md={12} sm={12} xs={24} className='max-[640px]:text-center'>
             <Button
               onClick={() => setServiceSelected(i)}
               style={{
@@ -34,7 +34,7 @@ export default function OurServices() {
                     ? 'var(--color-1, #17C5C5)'
                     : 'var(--input, rgba(20, 100, 100, 0.20))',
               }}
-              className='h-[60px] text-[#FFFFFF] text-[20px] mr-8 '>
+              className='h-[60px] text-[#FFFFFF] text-[20px] mr-8 mb-2 '>
               {i.name}
             </Button>
           </Col>
@@ -46,14 +46,14 @@ export default function OurServices() {
   return (
     <div
       className='our_container'
-      style={{ width: '100vw', height: '60vh', paddingLeft: '10vw', paddingRight: '1vw' }}>
-      <Row className='mt-[83px]'>
-        <Col span={14}>
+      style={{ width: '100%', paddingLeft: '10vw', paddingRight: '1vw' }}>
+      <Row className='mt-[83px]' gutter={24}>
+        <Col xl={12} lg={12} md={24} sm={24} xs={24}>
           <div className='our_title'>Our Services</div>
           {buttonRender()}
           <div className='our_content pr-10'>{serviceSelected?.description}</div>
         </Col>
-        <Col span={10}>
+        <Col xl={12} lg={12} md={24} sm={24} xs={24}>
           <Services service={serviceSelected ? serviceSelected.items : []} />
         </Col>
       </Row>

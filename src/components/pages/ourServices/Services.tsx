@@ -16,7 +16,7 @@ export default function Services({ service }: Props) {
     return (
       <Row className='mt-[33px]' gutter={16}>
         {service.map((i, idx) => (
-          <Col key={idx} span={6}>
+          <Col key={idx} xl={6} lg={6} md={12} sm={24} xs={24} className='max-[640px]:text-center'>
             <span
               onClick={() => setSelected(i.name)}
               style={i.name === selected ? { borderBottom: '1px solid #17C5C5' } : {}}
