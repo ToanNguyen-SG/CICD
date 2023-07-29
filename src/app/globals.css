@@ -28,7 +28,49 @@
   display: none;
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+.slider {
+  width: 120px;
+}
+
+.container-slider {
+  width: 180px;
+  position: relative;
+}
+
+@media screen and (max-width: 992px) {
+  .slider {
+    width: 400px;
+  }
+
+  .container-slider {
+    width: 480px;
+    margin-bottom: 20px;
+  }
+
+  .btn-previous {
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+  }
+
+  .btn-next {
+    position: absolute;
+    right: 0%;
+    top: 50%;
+    transform: translate(50%, -50%) rotate(-90deg);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .slider {
+    width: 280px;
+  }
+
+  .container-slider {
+    width: 360px;
+  }
+
   .logo-voi_desktop {
     display: none;
   }
@@ -41,5 +83,35 @@
     padding: 0;
     display: flex;
     justify-content: center;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 640px) {
+  .slider {
+    width: 300px;
+  }
+
+  .logo-voi_desktop {
+    display: none;
+  }
+
+  .logo-voi_mobile {
+    display: block;
+  }
+
+  .logo-voi_mobile .w-full {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .slider {
+    width: 120px;
+  }
+
+  .container-slider {
+    width: 180px;
   }
 }

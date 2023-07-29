@@ -39,24 +39,41 @@ export default function OurGamePage() {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 992,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          initialSlide: 3,
+          speed: 500,
+          vertical: false,
+          verticalSwiping: false,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
+          speed: 500,
+          vertical: false,
+          verticalSwiping: false,
+        },
+      },
+      {
+        breakpoint: 500,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          speed: 500,
+          vertical: false,
+          verticalSwiping: false,
         },
       },
     ],
@@ -85,16 +102,22 @@ export default function OurGamePage() {
       <div className='ourGame_Title flex  mb-8 text-center justify-center'>Our Games</div>
       <Row>
         <Col xl={4} lg={4} md={24} sm={24} xs={24}>
-          <div style={{ flex: 3 }} className='flex flex-col'>
-            <div style={{ flex: 1 }} className='flex items-center justify-center flex-col'>
-              <img onClick={previous} src='icons/sharp-play-arrow-top.svg' />
+          <div style={{ flex: 3, alignItems: 'center' }} className='flex flex-col'>
+            <div
+              style={{ flex: 1 }}
+              className='flex items-center justify-center flex-col container-slider'>
+              <img
+                onClick={previous}
+                src='icons/sharp-play-arrow-top.svg'
+                className='btn-previous'
+              />
               <div className='flex justify-center items-center flex-col'>
-                <Slider ref={customSlider} className='w-[120px]' {...settings}>
+                <Slider ref={customSlider} className='slider' {...settings}>
                   {games?.map((i, index) => {
                     return (
                       <div className='w-[135px] h-[130px] ' key={index}>
                         <img
-                          className='w-full h-full object-cover '
+                          className='w-full h-full object-cover max-sm:w-[120px]'
                           style={{
                             marginBottom: '5%',
                             marginTop: '5%',
@@ -107,7 +130,7 @@ export default function OurGamePage() {
                   })}
                 </Slider>
               </div>
-              <img onClick={next} src='icons/sharp-play-arrow-bottom.svg' />
+              <img onClick={next} src='icons/sharp-play-arrow-bottom.svg' className='btn-next' />
             </div>
           </div>
         </Col>
