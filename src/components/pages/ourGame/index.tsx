@@ -98,6 +98,7 @@ export default function OurGamePage() {
   }
 
   return (
+    
     <div className='about-background-start mt-[104px] mb-[104px]'>
       <div className='ourGame_Title flex  mb-8 text-center justify-center'>Our Games</div>
       <Row>
